@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -15,17 +15,17 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
     // anime = Tween<double>(begin: 20, end: 30).animate(animationController);
     anime = ColorTween(begin: Colors.amber, end: Colors.red)
         .animate(animationController);
 
-    anime2 = AlignmentTween(begin: Alignment(-1, -1), end: Alignment(1, 1))
+    anime2 = AlignmentTween(begin: const Alignment(-1, -1), end: const Alignment(1, 1))
         .animate(animationController);
     // ColorTween
     animationController.addListener(() {
@@ -44,7 +44,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   void dispose() {
     animationController.dispose();
-    // TODO: implement dispose
+    
     super.dispose();
   }
 
@@ -53,27 +53,26 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: anime.value,
       appBar: AppBar(
-        title: Text('Material App  Bar'),
+        title: const Text('Material App  Bar'),
       ),
       body: Center(
-        child: Container(
-            child: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              alignment: anime2.value,
-              height: 200,
-              child: Text('Sinem'),
-            ),
-            Text(anime.value.toString()),
-            ElevatedButton(
-                onPressed: () {
-                  animationController.forward(from: 0);
-                  // animationController.forward(from: 20);
-                },
-                child: Text('Start')),
+        Container(
+          alignment: anime2.value,
+          height: 200,
+          child: const Text('Sinem'),
+        ),
+        Text(anime.value.toString()),
+        ElevatedButton(
+            onPressed: () {
+              animationController.forward(from: 0);
+              // animationController.forward(from: 20);
+            },
+            child: const Text('Start')),
           ],
-        )),
+        ),
       ),
     );
   }
